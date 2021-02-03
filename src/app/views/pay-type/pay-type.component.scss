@@ -1,0 +1,171 @@
+@import "~assets/styles/variable.scss";
+
+.pay-type{
+    width: 100%;
+    overflow: hidden;
+
+    .pay-type-center{
+        width: 340px;
+        overflow: hidden;
+        margin: 100px auto;
+    }
+
+    .pay-type-title{
+        float: left;
+        width: 100%;
+        font-size: 28px;
+        color: $colorBlack;
+        margin-bottom: 10px;
+    }
+
+    .pay-type-company{
+        float: left;
+        width: 100%;
+        font-size: $fontSize2;
+        color: $colorBlack;
+        padding: 20px 0;
+
+        span{
+            float: left;
+        }
+
+        em{
+            float: right;
+            font-style: normal;
+        }
+    }
+
+    .pay-type-time{
+        float: left;
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid #DDD;
+
+        .pay-type-time-title{
+            float: left;
+            width: 100%;
+            font-size: $fontSize2;
+            color: $colorBlack;
+            margin-bottom: 20px;
+        }
+
+        .pay-type-time-item{
+            float: left;
+            width: 100%;
+            font-size: $fontSize2;
+            margin-bottom: 20px;
+            cursor: pointer;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .pay-type-time-left{
+                float: left;
+
+                i{
+                    float: left;
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 15px;
+
+                    &.alipay{
+                        background: url("~assets/icon/icon-alipay.jpg") no-repeat;
+                        background-size: 100% 100%;
+                    }
+
+                    &.weixin{
+                        background: url("~assets/icon/icon-weixin.jpg") no-repeat;
+                        background-size: 100% 100%;
+                    }
+                }
+
+                span{
+                    float: left;
+                    line-height: 50px;
+                    color: $colorLightGray;
+                }
+            }
+
+            .pay-type-time-right{
+                float: right;
+
+                i{
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    border: 2px solid #999;
+                    border-radius: 50%;
+                    margin-top: 13px;
+                }
+
+                fa-icon{
+                    display: inline-block;
+                    font-size: 24px;
+                    color: $colorLightBlue;
+                    margin-top: 11px;
+                }
+            }
+        }
+    }
+
+    .pay-type-total{
+        float: left;
+        width: 100%;
+        margin-bottom: 30px;
+        color: $colorBlack;
+        line-height: 70px;
+
+        .pay-type-total-left{
+            float: left;
+            font-size: $fontSize2;
+        }
+
+        .pay-type-total-right{
+            float: right;
+            font-size: 28px;
+        }
+    }
+
+    .pay-type-btn{
+        float: left;
+        width: 100%;
+
+        button{
+            float: left;
+            width: 100%;
+        }
+    }
+}
+
+.code-content{
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 30px 40px 30px;
+
+    h4{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize2;
+        color: $colorBlack;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    qr-code{
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .pay-type{
+        .pay-type-center{
+            margin: 0;
+            width: 100%;
+            padding: 50px 24px;
+        }
+    }
+}

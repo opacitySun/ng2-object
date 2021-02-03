@@ -1,0 +1,64 @@
+<div class="page-bottom-box">
+    <button 
+        [hidden]="data.btn1Hidden"
+        [ngClass]="{
+            'tesla-btn': true,
+            'tesla-btn--primary': true,
+            'tesla-btn--disabled': data.btn1Disabled
+        }" 
+        (click)="onBtn1()"
+    >
+        {{data.label1}}
+    </button>
+    <button 
+        [hidden]="data.btn2Hidden"
+        [ngClass]="{
+            'tesla-btn': true,
+            'tesla-btn--info': true,
+            'tesla-btn--disabled': data.btn2Disabled
+        }" 
+        (click)="onBtn2()"
+    >
+        {{data.label2}}
+    </button>
+    <div class="page-clause" *ngIf="data.hasExplain">
+        <p>
+            {{data.explainTxt}}
+        </p>
+    </div>
+    <div class="page-clause" *ngIf="data.hasClause">
+        <!-- <app-checkbox
+            class="page-clause-checkbox"
+            [(checked)]="clauseChecked"
+        ></app-checkbox> -->
+        <p>
+            点击“确认投保”按钮即代表同意一下内容：本人确认所填信息属实，已阅读并同意
+            <a href="javascript:void(0)" (click)="onArticleShow(0)">机动车交通事故责任强制保险条款</a>，
+            <a href="javascript:void(0)" (click)="onArticleShow(1)">中国保险行业协会机动车商业保险示范条款（2020版）</a>，
+            <a href="javascript:void(0)" (click)="onArticleShow(2)">客户告知书&保险经纪委托书</a>
+            等协议。
+        </p>
+    </div>
+    <div class="page-service-info">如需帮助，请致电保险客服电话 {{data.serviceTelephone}}</div>
+    <div class="page-go-account" (click)="goAccount()">取消定制保险</div>
+</div>
+
+
+<nz-modal 
+    [(nzVisible)]="data.articleModalVisible"
+    nzClassName="tesla-modal3"
+    nzTitle=""
+    nzFooter="null"
+    (nzOnCancel)="onArticleClose()"
+>
+    <div class="article-content">
+        <pdf-viewer 
+            [src]="data.pdfSrc" 
+            [render-text]="true"
+            [original-size]="false"
+            [zoom]="1"
+            [zoom-scale]="'page-width'"
+            [autoresize]="true"
+        ></pdf-viewer>
+    </div>
+</nz-modal>

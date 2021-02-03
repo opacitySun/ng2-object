@@ -1,0 +1,402 @@
+<div class="info-confirm">
+    <div nz-row [nzGutter]="data.contentGutter" class="page-layout-content">
+        <div nz-col nzXs="24" nzLg="12" [nzOffset]="data.nzOffset" class="page-layout-content--left">
+            <div nz-row>
+                <div nz-col [nzSpan]="24">
+                    <!--头部介绍-->
+                    <div class="page-layout-header" nz-row>
+                        <h1 nz-col [nzSpan]="24">购买保险</h1>
+                        <small nz-col [nzSpan]="24">根据车辆投保信息，快速测算出保费金额。</small>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div nz-col [nzSpan]="24">
+                    <app-basic-info
+                        [(props)]="data.carInfo"
+                        [isWhole]="true"
+                        [hasVin]="true"
+                    ></app-basic-info>
+                </div>
+            </div>
+
+            <div nz-row [ngClass]="{'page-form-title':true}">
+                <div nz-col [nzSpan]="24">
+                    <div class="spread">
+                        <span>车主信息</span>
+                    </div>
+                    <!-- <div class="explain">具有支付保险费和享有保险合同的当事人。</div> -->
+                </div>
+                <div nz-col [nzSpan]="24" class="page-form" [hidden]="!data.ownerVisible">
+                    <div nz-row [nzGutter]="24" class="page-form-row">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">姓名</div>
+                            <div class="page-form-item_input">
+                                <app-input
+                                    [maxlength]="10"
+                                    [(value)]="data.owner.name"
+                                ></app-input>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">手机</div>
+                            <div class="page-form-item_input">
+                                <app-input
+                                    [type]="'tel'"
+                                    [maxlength]="11"
+                                    [inputType]="'number'"
+                                    [(value)]="data.owner.phone"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label">电子邮箱</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [disabled]="true"
+                                    [(value)]="data.owner.email"
+                                ></app-input>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">身份证号码</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="18"
+                                    [inputType]="'idNo'"
+                                    [(value)]="data.owner.idNo"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">民族</div>
+                            <div class="page-form-item_input">
+                                <!-- <app-input
+                                    [maxlength]="5"
+                                    [(value)]="data.owner.nation"
+                                ></app-input> -->
+                                <app-select 
+                                    [(value)]="data.owner.nation"
+                                    [options]="data.nations"
+                                    [optionByParent]="true"
+                                ></app-select>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">签发机构</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="20"
+                                    [(value)]="data.owner.institution"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">证件有效起期</div>
+                            <div class="page-form-item_input">
+                                <app-date-picker 
+                                    [(value)]="data.owner.idStartDate"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">证件有效止期</div>
+                            <div class="page-form-item_input">
+                                <app-date-picker 
+                                    [(value)]="data.owner.idEndDate"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">地址信息</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="40"
+                                    [(value)]="data.owner.address"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-row [ngClass]="{'page-form-title':true}">
+                <div nz-col [nzSpan]="24">
+                    <div class="spread">
+                        <span>投保人信息</span>
+                    </div>
+                    <div class="explain">投保人是为车辆办理保险并支付保险费的企业或个人。</div>
+                </div>
+                <div nz-col [nzSpan]="24" class="page-form-check">
+                    <app-checkbox
+                        [label]="'同车主'"
+                        [(checked)]="data.policy.sameOwner"
+                    ></app-checkbox>
+                </div>
+                <div nz-col [nzSpan]="24" class="page-form" [hidden]="data.policy.sameOwner">
+                    <div nz-row [nzGutter]="24" class="page-form-row">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">姓名</div>
+                            <div class="page-form-item_input">
+                                <app-input
+                                    [maxlength]="10"
+                                    [disabled]="data.policy.sameOwner"
+                                    [(value)]="data.policy.name"
+                                ></app-input>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">手机</div>
+                            <div class="page-form-item_input">
+                                <app-input
+                                    [disabled]="data.policy.sameOwner"
+                                    [type]="'tel'"
+                                    [maxlength]="11"
+                                    [inputType]="'number'"
+                                    [(value)]="data.policy.phone"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label">电子邮箱</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [disabled]="data.policy.sameOwner"
+                                    [(value)]="data.policy.email"
+                                ></app-input>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">身份证号码</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [disabled]="data.policy.sameOwner"
+                                    [maxlength]="18"
+                                    [inputType]="'idNo'"
+                                    [(value)]="data.policy.idNo"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">民族</div>
+                            <div class="page-form-item_input">
+                                <!-- <app-input
+                                    [disabled]="data.policy.sameOwner"
+                                    [maxlength]="5"
+                                    [(value)]="data.policy.nation"
+                                ></app-input> -->
+                                <app-select 
+                                    [(value)]="data.policy.nation"
+                                    [options]="data.nations"
+                                    [optionByParent]="true"
+                                ></app-select>
+                                
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">签发机构</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="20"
+                                    [disabled]="data.policy.sameOwner"
+                                    [(value)]="data.policy.institution"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">证件有效起期</div>
+                            <div class="page-form-item_input">
+                                <app-date-picker 
+                                    [disabled]="data.policy.sameOwner"
+                                    [(value)]="data.policy.idStartDate"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">证件有效止期</div>
+                            <div class="page-form-item_input">
+                                <app-date-picker 
+                                    [disabled]="data.policy.sameOwner"
+                                    [(value)]="data.policy.idEndDate"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">地址信息</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="40"
+                                    [disabled]="data.policy.sameOwner"
+                                    [(value)]="data.policy.address"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-row [ngClass]="{'page-form-title':true}">
+                <div nz-col [nzSpan]="24">
+                    <div class="spread">
+                        <span>被保人信息</span>
+                    </div>
+                    <div class="explain">被保险人指其财产或人身受保险合同保障，享有保险金请求权的企业或个人。</div>
+                </div>
+                <div nz-col [nzSpan]="24" class="page-form-check">
+                    <app-checkbox
+                        [label]="'同车主'"
+                        [(checked)]="data.insured.sameOwner"
+                    ></app-checkbox>
+                </div>
+                <div nz-col [nzSpan]="24" class="page-form" [hidden]="data.insured.sameOwner">
+                    <div nz-row [nzGutter]="24" class="page-form-row">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">姓名</div>
+                            <div class="page-form-item_input">
+                                <app-input
+                                    [maxlength]="10"
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.name"
+                                ></app-input>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">手机</div>
+                            <div class="page-form-item_input">
+                                <app-input
+                                    [disabled]="data.insured.sameOwner"
+                                    [type]="'tel'"
+                                    [maxlength]="11"
+                                    [inputType]="'number'"
+                                    [(value)]="data.insured.phone"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label">电子邮箱</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.email"
+                                ></app-input>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">身份证号码</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [disabled]="data.insured.sameOwner"
+                                    [maxlength]="18"
+                                    [inputType]="'idNo'"
+                                    [(value)]="data.insured.idNo"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">民族</div>
+                            <div class="page-form-item_input">
+                                <!-- <app-input
+                                    [maxlength]="5"
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.nation"
+                                ></app-input> -->
+                                <app-select 
+                                    [(value)]="data.insured.nation"
+                                    [options]="data.nations"
+                                    [optionByParent]="true"
+                                ></app-select>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">签发机构</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="20"
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.institution"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">证件有效起期</div>
+                            <div class="page-form-item_input">
+                                <app-date-picker 
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.idStartDate"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">证件有效止期</div>
+                            <div class="page-form-item_input">
+                                <app-date-picker 
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.idEndDate"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div nz-row [nzGutter]="24" class="page-form-row" *ngIf="data.areaCode == '110100'">
+                        <div nz-col nzXs="24" nzLg="12" class="page-form-item">
+                            <div class="page-form-item_label required">地址信息</div>
+                            <div class="page-form-item_input">
+                                <app-input 
+                                    [maxlength]="40"
+                                    [disabled]="data.insured.sameOwner"
+                                    [(value)]="data.insured.address"
+                                ></app-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div nz-col nzXs="24" nzLg="6" [nzOffset]="data.nzOffset" class="page-layout-content--right">
+            <app-page-bottom 
+                [home]="this"
+                [label1]="'下一步'"
+                [run1]="onBtn1"
+                [label2]="'上一步'"
+                [run2]="onBtn2"
+                [btn2Disabled]="data.pageBottomBtn2Disabled"
+            >
+            </app-page-bottom>
+        </div>
+    </div>
+</div>

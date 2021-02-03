@@ -1,0 +1,52 @@
+<div class="pay-type">
+    <div class="pay-type-center">
+        <div class="pay-type-title">保险金额（元）</div>
+        <div class="pay-type-time">
+            <div class="pay-type-time-title">选择支付方式</div>
+            <div class="pay-type-time-item" (click)="data.payType = 1">
+                <div class="pay-type-time-left">
+                    <i class="weixin"></i>
+                    <span>微信支付</span>
+                </div>
+                <div class="pay-type-time-right">
+                    <i class="no-check" [hidden]="data.payType == 1"></i>
+                    <fa-icon [icon]="data.icon1"  [hidden]="data.payType == 2"></fa-icon>
+                </div>
+            </div>
+            <div class="pay-type-time-item" (click)="data.payType = 2">
+                <div class="pay-type-time-left">
+                    <i class="alipay"></i>
+                    <span>支付宝</span>
+                </div>
+                <div class="pay-type-time-right">
+                    <i class="no-check" [hidden]="data.payType == 2"></i>
+                    <fa-icon [icon]="data.icon1" [hidden]="data.payType == 1"></fa-icon>
+                </div>
+            </div>
+        </div>
+        <div class="pay-type-total">
+            <div class="pay-type-total-left">合计</div>
+            <div class="pay-type-total-right">
+                {{data.totalMoney}}
+            </div>
+        </div>
+        
+        <div class="pay-type-btn">
+            <button class="tesla-btn tesla-btn--primary" (click)="onPay()">支付保费</button>
+        </div>
+    </div>
+</div>
+
+<nz-modal 
+    [(nzVisible)]="!!data.codeUrl"
+    nzClassName="tesla-modal2"
+    nzTitle=""
+    nzFooter="null"
+    nzClosable="false"
+    nzMaskClosable="false"
+>
+    <div class="code-content">
+        <h4>请扫描二维码继续下面流程</h4>
+        <qr-code [value]="data.codeUrl" [size]="150"></qr-code>
+    </div>
+</nz-modal>

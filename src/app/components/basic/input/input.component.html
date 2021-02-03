@@ -1,0 +1,26 @@
+<div [ngClass]="{
+    'input-box':true
+}">
+    <span class="input-box-money" *ngIf="data.isMoney">￥</span>
+    <!-- <input 
+        [type]="data.type" 
+        [placeholder]="data.placeholder" 
+        [value]="data.value" 
+        [disabled]="data.disabled"
+        (keydown)="onKey($event)"
+        (keyup)="onKeyUp($event)"
+    /> -->
+    <input 
+        [type]="data.type" 
+        [placeholder]="data.placeholder"
+        [(ngModel)]="data.value" 
+        [disabled]="data.disabled"
+        [maxlength]="maxlength"
+        (keydown)="onKey($event)"
+        (keyup)="onKeyUp($event)"
+        (input)="validateZhVal($event)"
+        (compositionstart)="validateZhVal($event)"
+        (compositionend)="validateZhVal($event)"
+        (paste)="onPaste($event)"
+    />
+</div>

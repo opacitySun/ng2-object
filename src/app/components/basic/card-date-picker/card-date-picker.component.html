@@ -1,0 +1,26 @@
+<div class="card-date-picker-box">
+    <nz-calendar 
+        *ngIf="data.device == 0"
+        [nzFullscreen]="false" 
+        (nzSelectChange)="onValueChange($event)" 
+        (nzPanelChange)="onPanelChange($event)"
+    ></nz-calendar>
+    <Calendar
+        *ngIf="data.device > 0"
+        [(ngModel)]="data.state.date"
+        [locale]="'zhCN'"
+        [enterDirection]="data.state.enterDirection"
+        [visible]="data.state.show"
+        [minDate]="data.state.minDate"
+        [maxDate]="data.state.maxDate"
+        [pickTime]="data.state.pickTime"
+        [type]="data.state.type"
+        [rowSize]="data.state.rowSize"
+        [showShortcut]="data.state.showShortcut"
+        [infinite]="data.state.infinite"
+        [onSelect]="data.state.onSelect"
+        (onCancel)="triggerCancel()"
+        (onConfirm)="triggerConfirm($event)"
+        (onSelectHasDisableDate)="triggerSelectHasDisableDate($event)"
+    ></Calendar>
+</div>

@@ -1,0 +1,124 @@
+@import "~assets/styles/variable.scss";
+
+.info-confirm{
+    min-width: 1000px;
+    max-width: 1344px;
+    margin: 64px auto 40px auto;
+    overflow: hidden;
+
+    .page-form-title{
+        margin-top: 40px;
+
+        .spread{
+            float: left;
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+
+            span{
+                float: left;
+                font-size: 24px;
+                color: $colorBlack;
+            }
+
+            fa-icon{
+                float: right;
+                font-size: 14px;
+                color: #A2A3A5;
+                transition: all 0.3s ease 0s;
+            }
+        }
+
+        .explain{
+            float: left;
+            width: 100%;
+            margin-top: 10px;
+            line-height: 24px;
+            font-size: $fontSize2;
+            color: $colorLightBlack;
+        }
+    }
+
+    .page-form-check{
+        margin: 5px 0;
+    }
+
+    .page-form-item{
+        margin-top: 20px;
+    }
+
+    .page-form-item_label{
+        float: left;
+        width: 100%;
+        line-height: 30px;
+        font-size: $fontSize3;
+        color: $colorLightGray2;
+        padding-left: 20px;
+
+        &.color2{
+            color: $colorBlack;
+            // font-weight: $fontWeight;
+        }
+
+        &.required{
+            position: relative;
+
+            &:before{
+                content: '*';
+                position: absolute;
+                z-index: 1;
+                top: 2px;
+                left: 6px;
+                color: red;
+                font-size: $fontSize2;
+            }
+        }
+    }
+
+    .page-form-item_text{
+        float: left;
+        width: 100%;
+        font-size: $fontSize3;
+        color: $colorBlack;
+        // font-weight: $fontWeight;
+        padding-left: 20px;
+    }
+
+    .page-form-item_input{
+        float: left;
+        width: 100%;
+    }
+
+    .page-layout-content--right{
+        margin-top: 56px;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .info-confirm{
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        padding: 20px 24px;
+        margin: 0;
+
+        .page-form-title{
+            width: 100%;
+
+            .spread{
+                fa-icon{
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .page-form-item{
+            width: 100%;
+            padding-right: 0;
+        }
+
+        .page-layout-content--right{
+            margin-top: 36px;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div class="verify-fail">
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <h4>请联系人工服务</h4>
+            <p>
+                自动核保未通过，请致电保险客服电话进行人工核保<br />
+                {{data.serviceTelephone}}
+            </p>
+            <button class="tesla-btn tesla-btn--info" (click)="goAccount()">返回账户</button>
+        </div>
+    </div>
+</div>

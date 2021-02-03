@@ -1,0 +1,8 @@
+<div
+    [ngClass]="{'switch-pc':data.device == 0,'switch-mobile':data.device == 1 || data.device == 2}"
+    (click)="checkChange()" 
+>
+    <div [ngClass]="{'check':true,'checked':data.checked}">
+        <div class="circle"></div>
+    </div>
+</div>

@@ -1,0 +1,297 @@
+@import "~assets/styles/variable.scss";
+
+.insure-select{
+    min-width: 1000px;
+    max-width: 1344px;
+    margin: 64px auto 40px auto;
+
+    .page-layout-header{
+        margin-bottom: 15px;
+    }
+    
+    .page-city-info{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 15px;
+
+        em{
+            width: 100%;
+            overflow: hidden;
+            font-size: $fontSize3;
+            color: $colorLightGray;
+            line-height: 24px;
+            font-style: normal;
+            padding-left: 20px;
+        }
+
+        p{
+            width: 100%;
+            overflow: hidden;
+            font-size: $fontSize3;
+            color: $colorBlack;
+            line-height: 24px;
+            padding-left: 20px;
+        }
+    }
+
+    .page-company-group{    
+        margin-top: 10px;
+        
+        .page-company-label{
+            float: left;
+            width: 100%;
+            line-height: 30px;
+            font-size: $fontSize3;
+            color: $colorLightGray2;
+            padding-left: 20px;
+        }
+
+        .page-company-input{
+            float: left;
+            width: 100%;
+        }
+
+        .page-company-error{
+            float: left;
+            width: 100%;
+            font-size: $fontSize3;
+            color: red;
+            text-align: right;
+            line-height: 30px;
+            padding-right: 20px;
+        }
+
+    }
+
+    .page-history-btn{
+        font-size: $fontSize3;
+        color: $colorLightBlue;
+        cursor: pointer;
+    }
+
+    .page-select-company{
+        margin-top: 15px;
+    }
+
+    .page-insure-box{
+        margin-top: 30px;
+    }
+
+    .page-insure-title{
+        width: 100%;
+        overflow: hidden;
+        font-size: 16px;
+        color: $colorBlack;
+        font-weight: $fontWeight;
+        margin-top: 15px;
+    }
+
+    .page-insure-time{
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        position: relative;
+
+        p{
+            float: left;
+            width: 100%;
+            font-size: $fontSize3;
+            color: $colorBlack;
+
+            a{
+                color: $colorLightGray2;
+                text-decoration: underline;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    .page-insure-form{
+        width: 100%;
+        position: relative;
+        margin-top: 20px;
+
+        .page-insure-name{
+            width: 100%;
+            height: 24px;
+            line-height: 24px;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+
+            h6{
+                float: left;
+                font-size: $fontSize3;
+                color: $colorBlack;
+                // font-weight: $fontWeight;
+            }
+
+            i{
+                float: left;
+                margin-right: 15px;
+                width: 16px;
+                height: 16px;
+                margin-top: 4px;
+                
+                &.page-insure-name--extend{
+                    background: url("~assets/icon/icon-add.png") no-repeat;
+                    background-size: 100% 100%;
+                }
+
+                &.page-insure-name--unextend{
+                    background: url("~assets/icon/icon-remove.png") no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+
+    .page-insure-list{
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        margin-top: 20px;
+
+        .page-insure-item{
+            float: left;
+            width: 100%;
+
+            .page-insure-item_label{
+                width: 100%;
+                overflow: hidden;
+                font-size: $fontSize3;
+                color: $colorBlack;
+                margin-bottom: 15px;
+                padding-left: 20px;
+
+                span{
+                    float: left;
+                }
+
+                .insure-info{
+                    float: left;
+                    width: 14px;
+                    height: 14px;
+                    margin: 2px 0 0 10px;
+                    background: url("~assets/icon/icon-info-circle.png") no-repeat;
+                    background-size: 100% 100%;
+                }
+            }
+
+            .page-insure-item_check{
+                width: 100%;
+                overflow: hidden;
+                margin-bottom: 5px;
+                padding-left: 20px;
+            }
+
+            .page-insure-item_input{
+                width: 100%;
+                height: 40px;
+                position: relative;
+                margin-bottom: 15px;
+            }
+
+            .page-insure-item_txt{
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                font-size: $fontSize3;
+                color: $colorBlack;
+                padding-left: 20px;
+
+                .left{
+                    float: left;
+                }
+
+                .right{
+                    float: right;
+                }
+            }
+
+            .page-insure-item_checkbox{
+                width: 100%;
+                height: 100%;
+                border: 2px solid transparent;
+                border-radius: 20px;
+                padding: 2px 20px;
+
+                app-checkbox{
+                    float: left;
+                    width: 100%;
+
+                    ::ng-deep .checkbox-box{
+                        width: 100%;
+                    }
+                }
+
+                &.checked{
+                    border: 2px solid $colorLightBlue;
+                }
+            }
+
+            &:last-child{
+                .page-insure-item_input{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .page-insure-card-date{
+        position: absolute;
+        z-index: 7;
+        top: 54px;
+        right: 0;
+        display: none;
+
+        &.visible{
+            display: block;
+        }
+    }
+
+    .start-date-tip{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize2;
+        color: $colorBlack;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .page-layout-content--right{
+        margin-top: 56px;
+    }
+}
+
+// ::ng-deep .page-insure-select {
+//     .select-div{
+//         background: #FFF !important;
+//     }
+// }
+
+.history-list{
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 35px 40px 35px;
+}
+
+@media screen and (max-width:1000px) {
+    .insure-select{
+        padding: 20px 24px;
+        margin: 0;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+
+        .page-layout-content--right{
+            margin-top: 36px;
+        }
+    }
+
+    .history-list{
+        float: left;
+        overflow: auto;
+        padding: 5px 0 20px 0;
+    }
+}

@@ -1,0 +1,22 @@
+<div class="date-picker-box">
+    <nz-date-picker 
+        *ngIf="data.device == 0"
+        class="date-picker-box--pc"
+        [(ngModel)]="data.value" 
+        [nzFormat]="'yyyy/MM/dd'"
+        [nzAllowClear]="false"
+        [nzDisabled]="data.disabled"
+        [nzPlaceHolder]="data.placeholder"
+        (ngModelChange)="onDateChange($event)"
+    ></nz-date-picker>
+
+    <ListItem
+        *ngIf="data.device > 0"
+        DatePicker
+        [extra]="utils.dateToStringFormat(data.date, 'yyyy/mm/dd')"
+        [mode]="'date'"
+        [disabled]="data.disabled"
+        [(ngModel)]="data.date"
+        (onOk)="onMobileDateChange($event)"
+    ></ListItem>
+</div>

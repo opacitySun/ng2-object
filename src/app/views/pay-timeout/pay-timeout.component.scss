@@ -1,0 +1,113 @@
+@import "~assets/styles/variable.scss";
+
+.pay-timeout{
+    width: 100%;
+    overflow: hidden;
+
+    .pay-timeout-center{
+        width: 500px;
+        overflow: hidden;
+        margin: 40px auto;
+    }
+
+    .pay-timeout-icon{
+        width: 90px;
+        height: 90px;
+        line-height: 84px;
+        text-align: center;
+        margin: 30px auto;
+        border: 3px solid #f4ea2a;
+        border-radius: 50%;
+
+        fa-icon{
+            font-size: 40px;
+            color: #f4ea2a;
+        }
+    }
+
+    .pay-timeout-text{
+        width: 100%;
+        overflow: hidden;
+        font-size: 38px;
+        color: $colorBlack;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .pay-timeout-small{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize2;
+        color: $colorBlack;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .pay-timeout-service{
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        margin-top: 70px;
+
+        fa-icon{
+            font-size: $fontSize1;
+            color: #000;
+            margin-right: 10px;
+        }
+
+        span{
+            font-size: $fontSize2;
+            color: $colorBlack;
+        }
+    }
+
+    .pay-timeout-btn{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 70px;
+
+        button{
+            display: block;
+            margin: 0 auto;
+            width: 320px;
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .pay-timeout{
+        .pay-timeout-center{
+            margin: 0;
+            width: 100%;
+            padding: 70px 24px;
+        }
+
+        .pay-timeout-icon{
+            width: 54px;
+            height: 54px;
+            line-height: 50px;
+            border: 2px solid #f4ea2a;
+
+            fa-icon{
+                font-size: 20px;
+            }
+        }
+
+        .pay-timeout-text{
+            font-size: 22px;
+        }
+
+        .pay-timeout-btn{
+            button{
+                width: 100%; 
+            }
+        }
+
+        .pay-timeout-service{
+            position: fixed;
+            z-index: 1;
+            bottom: 60px;
+            left: 0;
+        }
+    }
+}

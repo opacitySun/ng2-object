@@ -1,0 +1,55 @@
+@import "~assets/styles/variable.scss";
+
+.pay-success{
+    width: 350px;
+    margin: 100px auto;
+
+    .pay-success-icon{
+        width: 54px;
+        height: 54px;
+        margin: 30px auto;
+        background: url("~assets/icon/checkmark.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .pay-success-text{
+        width: 100%;
+        overflow: hidden;
+        font-size: 28px;
+        color: $colorBlack;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .pay-success-small{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize2;
+        color: $colorLightGray;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .pay-success-btn{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 20px;
+
+        button{
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media screen and (max-width:350px) {
+    .pay-success{
+        margin: 0;
+        width: 100%;
+        padding: 70px 24px;
+
+        .pay-success-text{
+            font-size: 22px;
+        }
+    }
+}

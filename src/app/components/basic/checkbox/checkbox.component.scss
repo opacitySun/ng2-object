@@ -1,0 +1,37 @@
+@import "~assets/styles/variable.scss";
+
+.checkbox-box{
+    display: inline-block;
+    height: 30px;
+    cursor: pointer;
+
+    .check{
+        float: left;
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        border: 1px solid $colorLightGray2;
+        margin-right: 9px;
+        margin-top: 6px;
+
+        fa-icon{
+            float: left;
+            font-size: 11px;
+            color: $colorBlack;
+            margin:0 3px;
+        }
+
+        &.checked{
+            background: url("~assets/icon/icon-check-right.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+    }
+
+    span{
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        font-size: $fontSize3;
+        color: $colorBlack;
+    }
+}

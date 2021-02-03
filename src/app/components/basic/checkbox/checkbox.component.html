@@ -1,0 +1,9 @@
+<div 
+    class="checkbox-box"
+    (click)="checkChange()" 
+>
+    <div class="check" [ngClass]="{'check': true,'checked':data.checked}">
+        <!-- <fa-icon [icon]="data.iconChecked" [hidden]="!data.checked"></fa-icon> -->
+    </div>
+    <span>{{data.label}}</span>
+</div>

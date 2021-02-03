@@ -1,0 +1,79 @@
+@import "~assets/styles/variable.scss";
+
+.page-bottom-box{
+    width: 100%;
+    overflow: hidden;
+
+    button{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .page-service-info{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize3;
+        color: $colorLightGray;
+        margin: 10px 0 20px 0;
+    }
+
+    .page-clause{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize3;
+        color: #757575;
+        text-align: left;
+        line-height: 24px;
+        margin-bottom: 20px;
+
+        app-checkbox{
+            float: left;
+            width: 21px;
+        }
+
+        p{
+            float: left;
+            width: 100%;
+        }
+
+        a{
+            color: #757575;
+            text-decoration: underline;
+        }
+    }
+
+    .page-go-account{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize3;
+        color: $colorLightGray2;
+        text-align: center;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+::ng-deep .page-clause-checkbox{
+    float: left;
+
+    .checkbox-box{
+        height: 18px;
+
+        .check{
+            margin-top: 0 !important;
+            margin-right: 3px !important;
+        }
+    }
+}
+
+.article-content{
+    width: 100%;
+    overflow: auto;
+    padding: 20px 0;
+    max-height: 80vh;
+
+    pdf-viewer{
+        display: block;
+        max-width: 100%;
+    }
+}

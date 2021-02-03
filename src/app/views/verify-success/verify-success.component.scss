@@ -1,0 +1,377 @@
+@import "~assets/styles/variable.scss";
+
+.verify-success{
+    width: 330px;
+    margin: 100px auto;
+
+    .verify-success-title{
+        float: left;
+        width: 100%;
+        font-size: 28px;
+        color: $colorBlack;
+        margin-bottom: 10px;
+    }
+
+    .verify-success-company{
+        float: left;
+        width: 100%;
+        font-size: $fontSize2;
+        color: $colorBlack;
+        padding: 20px 0;
+
+        span{
+            float: left;
+        }
+
+        em{
+            float: right;
+            font-style: normal;
+        }
+    }
+
+    .verify-success-time{
+        float: left;
+        width: 100%;
+        padding: 0;
+
+        .verify-success-time-title{
+            float: left;
+            width: 100%;
+            font-size: $fontSize2;
+            color: $colorBlack;
+            margin-bottom: 20px;
+        }
+
+        .verify-success-time-item{
+            float: left;
+            width: 100%;
+            font-size: $fontSize2;
+            color: $colorLightGray;
+            margin-bottom: 20px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .verify-success-time-left{
+                float: left;
+            }
+
+            .verify-success-time-right{
+                float: right;
+            }
+        }
+    }
+
+    .verify-success-total{
+        float: left;
+        width: 100%;
+        margin-bottom: 30px;
+        color: $colorBlack;
+        line-height: 70px;
+
+        .verify-success-total-left{
+            float: left;
+            font-size: 20px;
+        }
+
+        .verify-success-total-right{
+            float: right;
+            font-size: 24px;
+        }
+    }
+
+    .verify-success-code{
+        float: left;
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-bottom: 40px;
+
+        .verify-success-code--label{
+            float: left;
+            width: 100%;
+            font-size: $fontSize2;
+            color: #888;
+            line-height: 24px;
+        }
+
+        .verify-success-code--input{
+            float: left;
+            width: 100%;
+
+            .verify-success-code--input_left{
+                float: left;
+                width: calc(100% - 85px);
+                
+                input{
+                    float: left;
+                    width: 100%;
+                    padding: 9px 10px;
+                    border: 1px solid #D0D1D2;
+                    border-radius: 4px;
+                    background: transparent;
+                    color: #5C5E62;
+                    font-size: $fontSize3;
+                }
+            }
+
+            .verify-success-code--input_right{
+                float: right;
+                width: 75px;
+
+                button{
+                    float: left;
+                    width: 100%;
+                    font-size: $fontSize2;
+                    color: #FFF;
+                    background: #CAC0B9;
+                    padding: 8px 0;
+                    text-align: center;
+                    border-radius: 4px;
+                    border: 0;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .verify-success-btn{
+        float: left;
+        width: 100%;
+
+        button{
+            float: left;
+            width: 100%;
+        }
+    }
+
+    .verify-success-btn2{
+        float: left;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+
+        a{
+            font-size: $fontSize2;
+            color: $colorLightGray2;
+            text-decoration: underline;
+        }
+    }
+}
+
+.pay-content{
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 30px 40px 30px;
+
+    .pay-content-title{
+        float: left;
+        width: 100%;
+        font-size: 28px;
+        color: $colorBlack;
+        padding: 0 15px;
+    }
+
+    .pay-content-error{
+        float: left;
+        width: 100%;
+        background: $bgColor1;
+        border-radius: 6px;
+        padding: 10px 15px;
+        margin-top: 15px;
+
+        i{
+            float: left;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            margin-right: 10px;
+            font-size: 14px;
+            font-style: normal;
+            color: #FFF;
+            background: $bgColor3;
+            border-radius: 50%;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        p{
+            float: left;
+            width: calc(100% - 30px);
+            font-size: 14px;
+            color: $colorLightGray2;
+            text-align: left;
+            line-height: 30px;
+        }
+    }
+
+    .pay-content-phone{
+        float: left;
+        width: 100%;
+        font-size: 14px;
+        color: $colorLightGray2;
+        line-height: 30px;
+        padding: 15px 15px;
+
+        span{
+            color: $colorBlack;
+            font-weight: $fontWeight;
+        }
+    }
+
+    .pay-content-text{
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 0 15px;
+
+        .pay-content-text--item{
+            float: left;
+            width: 100%;
+            line-height: 30px;
+            margin-bottom: 7px;
+
+            em{
+                float: left;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                margin-right: 10px;
+                font-size: 14px;
+                font-style: normal;
+                color: #FFF;
+                background: $colorBlack;
+                border-radius: 50%;
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            p{
+                float: left;
+                width: calc(100% - 30px);
+                font-size: 14px;
+                color: $colorBlack;
+            }
+        }
+    }
+
+    .pay-content-code{
+        float: left;
+        width: 100%;
+
+        .pay-content-code--input{
+            float: left;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+
+            input{
+                float: left;
+                width: 100%;
+                padding: 9px 20px;
+                text-align: center;
+                margin-right: 10px;
+                border: 1px solid #D0D1D2;
+                background: transparent;
+                color: $colorBlack;
+                font-size: $fontSize2;
+            }
+
+            code-input {
+                --item-spacing: 15px;
+                --item-height: 40px;
+                --color: $colorBlack;
+                --item-border: 0;
+                --item-background: #f4f4f4;
+                --item-border-bottom: 0;
+                // --item-border-has-value: none;
+                // --item-border-bottom-has-value: 2px solid #888888;
+                // --item-border-focused: none;
+                // --item-border-bottom-focused: 2px solid #809070;
+                // --item-shadow-focused: none;
+                --item-border-radius: 4px;
+            }
+        }
+
+        .pay-content-code--btn{
+            float: left;
+            width: 100%;
+            font-size: $fontSize2;
+            color: $colorLightBlue;
+            padding: 20px 15px 0 15px;
+            cursor: pointer;
+
+            &.been-sent{
+                cursor: default;
+                color: $colorLightGray;
+            }
+        }
+    }
+
+    .pay-content-btn{
+        float: left;
+        width: 100%;
+        text-align: center;
+
+        button{
+            width: 310px;
+        }
+    }
+}
+
+.code-content{
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 30px 40px 30px;
+
+    h4{
+        width: 100%;
+        overflow: hidden;
+        font-size: 28px;
+        color: $colorBlack;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    qr-code{
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .verify-success{
+        margin: 0;
+        width: 100%;
+        padding: 50px 24px;
+    }
+
+    .pay-content{
+        padding: 30px 0;
+
+        .pay-content-title{
+            font-size: 24px;
+        }
+
+        .pay-content-code{
+            .pay-content-code--input{
+                input{
+                    width: 100%;
+                }
+            }
+        }
+
+        .pay-content-btn{
+            button{
+                width: 100%;
+            }
+        }
+
+        .pay-content-code--btn{
+            text-align: center;
+        }
+    }
+}

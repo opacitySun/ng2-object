@@ -1,0 +1,52 @@
+<p>home works!</p>
+<a [routerLink]="['/layout/calculation']">calculation</a>
+<br>
+<fa-icon [icon]="data.myIcon" style="color:red;"></fa-icon>
+<br>
+<button (click)="changeState()">changeState</button>
+<br>
+<app-select 
+    [defaultValue]="1" 
+    [(value)]="data.selectVal"
+    [options]="data.options"
+></app-select>
+<br>
+<app-select 
+    [defaultValue]="0" 
+    [(value)]="data.selectVal2"
+    [options]="data.options2"
+></app-select>
+<br>
+<app-checkbox
+    [label]="data.checkLabel"
+    [(checked)]="data.checked"
+></app-checkbox>
+<br>
+<app-switch
+    [(checked)]="data.checked"
+></app-switch>
+<br>
+<p
+    tooltip="Tooltip"
+    [options]="data.tooltipOptions"
+>Tooltip will show on mouse enter.</p>
+<br>
+<nz-date-picker [(ngModel)]="data.date" (ngModelChange)="onDateChange($event)"></nz-date-picker>
+<br>
+<ListItem
+    DatePicker
+    [extra]="currentDateFormat(data.mobileDate, 'yyyy-mm-dd')"
+    [arrow]="'horizontal'"
+    [mode]="'date'"
+    [(ngModel)]="data.mobileDate"
+    (onOk)="onMobileDateChange($event)"
+></ListItem>
+<br>
+<app-tabs></app-tabs>
+<br>
+<app-input 
+    [type]="'text'" 
+    [placeholder]="'请输入111'"
+    [(value)]="data.inputVal"
+    [disabled]="true"
+></app-input>

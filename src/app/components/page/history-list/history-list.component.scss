@@ -1,0 +1,125 @@
+@import "~assets/styles/variable.scss";
+
+.history-list-box{
+    width: 100%;
+    overflow: hidden;
+
+    .history-list-title{
+        width: 100%;
+        overflow: hidden;
+        font-size: 20px;
+        color: #393C41;
+        margin-bottom: 20px;
+        font-weight: bold;
+
+        small{
+            font-size: $fontSize2;
+            font-weight: normal;
+            color: $colorLightGray;
+        }
+    }
+
+    .history-list-content{
+        width: 100%;
+        overflow: auto;
+        max-height: calc(100vh - 20vh - 400px);
+        min-height: 200px;
+
+        .history-list-item{
+            float: left;
+            width: calc((100% / 2) - 10px);
+            padding: 15px 20px;
+            border:1px solid rgba(0,0,0,0.1);
+            border-radius: 6px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+
+            &:nth-child(2n){
+                margin-right: 0;
+            }
+
+            &.checked{
+                border:2px solid #3F6AE1;
+            }
+
+            .history-list-item--left{
+                float: left;
+                width: 50%;
+
+                em{
+                    float: left;
+                    width: 100%;
+                    font-style: normal;
+                    font-size: $fontSize2;
+                    color: $colorLightBlack;
+                    margin-bottom: 5px;
+                }
+
+                span{
+                    float: left;
+                    width: 100%;
+                    font-size: $fontSize2;
+                    color: $colorLightGray2;
+                    line-height: 30px;
+                }
+            }
+
+            .history-list-item--right{
+                float: right;
+                width: 50%;
+                text-align: right;
+
+                em{
+                    float: left;
+                    width: 100%;
+                    font-style: normal;
+                    font-size: 20px;
+                    color: $colorLightBlack;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+
+    .history-list-btn{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 30px;
+        text-align: center;
+
+        button{
+            width: 330px;
+
+            &.no-check{
+                &:hover{
+                    opacity: 0.7;
+                    cursor: default;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .history-list-box{
+        .history-list-content{
+            max-height: calc(100vh - 20vh - 200px);
+
+            .history-list-item{
+                width: 100%;
+                margin-right: 0;
+
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .history-list-btn{
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

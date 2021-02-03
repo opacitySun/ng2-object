@@ -1,0 +1,146 @@
+@import "~assets/styles/variable.scss";
+
+.insure-confirm{
+    min-width: 1000px;
+    max-width: 1344px;
+    margin: 64px auto 40px auto;
+
+    .page-layout-header{
+        margin-bottom: 10px;
+    }
+
+    .page-layout-content--right{
+        margin-top: 74px;
+    }
+
+    .page-title{
+        margin-bottom: 20px;
+    }
+
+    .page-info{
+        margin-bottom: 20px;
+    }
+
+    .page-info-box{
+        margin-bottom: 15px;
+
+        .page-info-txt{
+            font-size: $fontSize3;
+            color: $colorBlack;
+        }
+    }
+
+    .page-history-btn{
+        overflow: hidden;
+        font-size: $fontSize3;
+        color: $colorLightBlue;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+
+    .page-table-box{
+        padding: 0 24px;
+        margin-top: 15px;
+    }
+
+    .page-table-title{
+        font-size: 16px;
+        color: $colorBlack;
+        margin-bottom: 10px;
+    }
+
+    .page-table-time{
+        font-size: $fontSize3;
+        color: $colorLightGray2;
+    }
+
+    .page-table-small{
+        font-size: $fontSize3;
+        color: $colorLightGray2;
+        margin-bottom: 10px;
+    }
+
+    .page-table{
+        margin-bottom: 15px;
+
+        .page-table-item{
+            margin-bottom: 15px;
+            font-size: $fontSize3;
+
+            .th{
+                color: $colorBlack;
+                font-weight: $fontWeight;
+
+                div{
+                    &:first-child{
+                        text-align: left;
+                    }
+                    &:last-child{
+                        text-align: right;
+                    }
+                }
+            }
+
+            .td{
+                color: $colorLightGray;
+                margin-top: 10px;
+
+                div{
+                    &:first-child{
+                        text-align: left;
+                    }
+                    &:last-child{
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+
+    .page-total-item{
+        font-size: $fontSize3;
+        color: $colorLightGray2;
+        margin-bottom: 15px;
+
+        div{
+            &:first-child{
+                text-align: left;
+            }
+            &:last-child{
+                text-align: right;
+            }
+        }
+    }
+
+    .page-total-price{
+        font-size: $fontSize1;
+        color: $colorBlack;
+
+        div{
+            &:first-child{
+                text-align: left;
+            }
+            &:last-child{
+                text-align: right;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .insure-confirm{
+        padding: 20px 24px;
+        margin: 0;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+
+        .page-layout-content--right{
+            margin-top: 36px;
+        }
+
+        .page-table-box{
+            padding: 0 0 0 12px;
+        }
+    }
+}

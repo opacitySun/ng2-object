@@ -1,0 +1,333 @@
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css";
+@import "~assets/styles/variable.scss";
+/* tesla专用字体 */
+@font-face {
+    font-family: "GothamSSm-Bold";
+	src: url("~assets/fonts/GothamSSm-Bold_Web.woff") format("woff");
+}
+@font-face {
+    font-family: "GothamSSm-Book";
+	src: url("~assets/fonts/GothamSSm-Book_Web.woff") format("woff");
+}
+@font-face {
+    font-family: "GothamSSm-Light";
+	src: url("~assets/fonts/GothamSSm-Light_Web.woff") format("woff");
+}
+@font-face {
+    font-family: "GothamSSm-Medium";
+	src: url("~assets/fonts/GothamSSm-Medium_Web.woff") format("woff");
+}
+@font-face {
+    font-family: "GothamSSm-XLight";
+	src: url("~assets/fonts/GothamSSm-XLight_Web.woff") format("woff");
+}
+
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin:0;
+    padding:0;
+    -webkit-text-size-adjust:none;
+    box-sizing: border-box;
+	font-family: "GothamSSm-Bold", "GothamSSm-Book", "GothamSSm-Light", "GothamSSm-Medium", "GothamSSm-XLight", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,PingFangSC-Regular, "Microsoft YaHei";
+}
+html,body{ line-height:normal; }
+ul,li,ol{list-style:none outside none;}
+a{text-decoration:none;}
+table { border-collapse:collapse;border-spacing:0;}
+.clear:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; font-size:0; }
+.clear{ zoom:1; }
+
+/*清除下拉框默认样式
+-----------------------------------------*/
+select::-ms-expand { display: none; }
+select{appearance:none;-moz-appearance:none;-webkit-appearance:none;}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸
+----------------------------------*/
+::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: transparent;
+	-webkit-overflow-scrolling : touch;
+}
+ 
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+	background-color: #FFF;
+	-webkit-box-shadow: inset 0 0 6px transparent;
+	border-radius: 6px;
+}
+ 
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+	border-radius: 6px;
+	background-color: #DDD;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+/*全局样式 -------------------------*/
+[hidden] { display: none !important;}
+
+button.tesla-btn{
+	border:0;
+	height:40px;
+	line-height:40px;
+	width:100%;
+	text-align: center;
+	border-radius:20px;
+	font-size: $fontSize3;
+	cursor: pointer;
+
+	&.tesla-btn--primary{
+		background:$colorLightBlue;
+		color:$bgColor2;
+
+		&:hover{
+			background:$colorDarkBlue;
+		}
+
+		&:active{
+			opacity:0.7;
+		}
+
+		&:focus{
+			position: relative;
+			background:$colorDarkBlue;
+
+			&:before{
+				content:'';
+				position: absolute;
+				z-index:1;
+				width:calc(100% - 6px);
+				height:calc(100% - 6px);
+				top:3px;
+				left:3px;
+				border:2px solid $bgColor2;
+				border-radius:18px;
+			}
+		}
+
+		&.tesla-btn--disabled{
+			background: #B2C4F3;
+			cursor: not-allowed;
+		}
+	}
+
+	&.tesla-btn--info{
+		background: $bgColor2;	
+		border: 2px solid $colorBlack;
+		color: $colorBlack;
+		line-height: 36px;
+
+		&:hover{
+			color: #FFF;
+			background: $colorBlack;
+		}
+
+		&:active{
+			opacity:0.7;
+		}
+
+		&:focus{
+			position: relative;
+			background: $colorBlack;
+			color: #FFF;
+
+			&:before{
+				content:'';
+				position: absolute;
+				z-index:1;
+				width:calc(100% - 6px);
+				height:calc(100% - 6px);
+				top:3px;
+				left:3px;
+				border:2px solid $bgColor2;
+				border-radius:18px;
+			}
+		}
+
+		&.tesla-btn--disabled{
+			cursor: not-allowed;
+			opacity:0.5;
+
+			&:hover{
+				background: $bgColor2;
+				color: $colorBlack;
+			}
+
+			&:focus{
+				background: $bgColor2;
+				color: $colorBlack;
+
+				&:before{
+					content: normal;
+				}
+			}
+		}
+	}
+}
+
+.tesla-tooltip{
+	color: $colorBlack;
+	font-size: $fontSize3;
+	line-height: 18px;
+	padding: 0 10px;
+	text-align: left !important;
+
+	span{
+		color: red;
+	}
+}
+
+.page-layout-header{
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 40px;
+
+	h1{
+		width: 100%;
+		font-size: $fontSize4;
+		color: $colorBlack;
+		line-height: 48px;
+		margin-bottom: 16px;
+		font-weight: $fontWeight;
+	}
+
+	small{
+		width: 100%;
+		font-size: $fontSize2;
+		color: #333;
+
+		.icon-info{
+			float: left;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			background: #3E6AE1;
+			border-radius: 50%;
+			color: #FFF;
+			font-style: normal;
+			font-size: $fontSize3;
+			margin-right: 10px;
+		}
+	}
+}
+
+.page-title{
+	font-size: 24px;
+	line-height: 28px;
+	font-weight: $fontWeight;
+}
+
+@media screen and (max-width:1000px) {
+	.page-layout-header{
+		h1{
+			font-size: 28px;
+			line-height: 28px;
+			margin-bottom: 10px;
+		}
+	}
+}
+/*------------------------- 全局样式 */
+
+
+/*NG ZORRO样式重置 -------------------------*/
+.ant-picker-input>input{
+	font-size: $fontSize3;
+}
+.ant-picker-input>input:hover,
+.ant-picker-input>input:focus{
+	border: 0;
+	box-shadow: none;
+}
+.ant-picker-focused{
+	box-shadow: none;
+}
+.am-picker-popup-item{
+	color: $colorBlack;
+}
+.am-list-item .am-list-line .am-list-content{
+	display: none;
+}
+.am-list-item .am-list-line .am-list-extra{
+	padding: 0;
+	flex-basis: 100%;
+	font-size: $fontSize2;
+	color: $colorBlack;
+	text-align: left;
+}
+.am-list-item:not(:last-child) .am-list-line{
+	border: 0;
+}
+
+.tesla-modal{
+	top: 20%;
+	width: 750px !important;
+
+    .ant-modal-content{
+        border-radius: 10px;
+    }
+
+    .ant-modal-footer{
+        border: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+.tesla-modal2{
+	top: 20%;
+
+    .ant-modal-content{
+        border-radius: 10px;
+    }
+
+    .ant-modal-footer{
+        border: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+.tesla-modal3{
+	top: 5%;
+	width: 100% !important;
+
+	.ant-modal-body{
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+    .ant-modal-content{
+        border-radius: 10px;
+    }
+
+    .ant-modal-footer{
+        border: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-width:1000px) {
+	.tesla-modal{
+		top: 20vh;
+		height: 80vh;
+		margin: 0;
+		max-width: 100%;
+		padding-bottom: 0;
+
+		.ant-modal-content{
+			height: 100%;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+
+	.tesla-modal2{
+		width: calc(100% - 48px) !important;
+		margin: 0 24px !important;
+	}
+}
+/*------------------------- NG ZORRO样式重置 */

@@ -1,0 +1,88 @@
+@import "~assets/styles/variable.scss";
+
+.pay-fail{
+    width: 100%;
+    overflow: hidden;
+
+    .pay-fail-center{
+        width: 500px;
+        overflow: hidden;
+        margin: 40px auto;
+    }
+
+    .pay-fail-icon{
+        width: 90px;
+        height: 90px;
+        line-height: 84px;
+        text-align: center;
+        margin: 30px auto;
+        border: 3px solid #B74134;
+        border-radius: 50%;
+
+        fa-icon{
+            font-size: 40px;
+            color: #B74134;
+        }
+    }
+
+    .pay-fail-text{
+        width: 100%;
+        overflow: hidden;
+        font-size: 38px;
+        color: $colorBlack;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .pay-fail-small{
+        width: 100%;
+        overflow: hidden;
+        font-size: $fontSize2;
+        color: $colorBlack;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .pay-fail-btn{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 70px;
+
+        button{
+            display: block;
+            margin: 0 auto;
+            width: 320px;
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .pay-fail{
+        .pay-fail-center{
+            margin: 0;
+            width: 100%;
+            padding: 70px 24px;
+        }
+
+        .pay-fail-icon{
+            width: 54px;
+            height: 54px;
+            line-height: 50px;
+            border: 2px solid #B74134;
+
+            fa-icon{
+                font-size: 20px;
+            }
+        }
+
+        .pay-fail-text{
+            font-size: 22px;
+        }
+
+        .pay-fail-btn{
+            button{
+                width: 100%; 
+            }
+        }
+    }
+}

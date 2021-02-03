@@ -1,0 +1,25 @@
+<div class="pay-success">
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <div nz-row>
+                <div nz-col nzXs="22" nzLg="24" [nzOffset]="data.topOffset">
+                    <div class="pay-success-icon"></div>
+                    <div class="pay-success-text">
+                        支付成功
+                    </div>
+                    <div class="pay-success-small">
+                        您已投保成功，保险公司正在生成电子保单链接，稍后将以短信形式发送至您的手机，请及时查询下载电子保单。
+                    </div>
+                    <div class="pay-success-small">
+                        如需帮助，请致电保险客服电话 {{data.serviceTelephone}}
+                    </div>
+                </div>
+                <div nz-col nzXs="24" nzLg="22" [nzOffset]="data.bottomOffset">
+                    <div class="pay-success-btn">
+                        <button class="tesla-btn tesla-btn--info" (click)="goHome()">返回账户</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

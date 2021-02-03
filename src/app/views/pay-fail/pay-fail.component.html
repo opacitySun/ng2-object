@@ -1,0 +1,16 @@
+<div class="pay-fail">
+    <div class="pay-fail-center">
+        <div class="pay-fail-icon">
+            <fa-icon [icon]="data.icon1"></fa-icon>
+        </div>
+        <div class="pay-fail-text">
+            对不起，支付失败
+        </div>
+        <div class="pay-fail-small">
+            {{data.errorText}}
+        </div>
+        <div class="pay-fail-btn">
+            <button class="tesla-btn tesla-btn--info" (click)="onPay()">重新支付</button>
+        </div>
+    </div>
+</div>

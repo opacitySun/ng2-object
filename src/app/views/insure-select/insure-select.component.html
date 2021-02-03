@@ -1,0 +1,427 @@
+<div class="insure-select">
+    <div nz-row [nzGutter]="data.contentGutter" class="page-layout-content">
+        <div nz-col nzXs="24" nzLg="12" [nzOffset]="data.nzOffset" class="page-layout-content--left">
+            <div nz-row>
+                <div nz-col [nzSpan]="24">
+                    <!--头部介绍-->
+                    <div class="page-layout-header" nz-row *ngIf="data.businessType == 0">
+                        <h1 nz-col [nzSpan]="24">定制保险</h1>
+                        <small nz-col [nzSpan]="24">
+                            <i 
+                                class="icon-info"
+                            >i</i>
+                            车辆在获取车辆合格证及发票后即可购买保险。您可提前选择保险方案，查看金额。
+                        </small>
+                    </div>
+                    <div class="page-layout-header" nz-row *ngIf="data.businessType == 1">
+                        <h1 nz-col [nzSpan]="24">购买保险</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-row>
+                <div 
+                    nz-col 
+                    [nzSpan]="24" 
+                    class="page-history-btn"
+                    [hidden]="!data.historyBtnVisible"
+                    (click)="data.historyModalVisible = true"
+                >查看已存保险方案</div>
+            </div>
+
+            <div nz-row *ngIf="data.businessType == 0">
+                <div nz-col [nzSpan]="24">
+                    <app-basic-info
+                        [(props)]="data.carInfo"
+                        [isWhole]="false"
+                        [hasVin]="true"
+                    ></app-basic-info>
+                </div>
+            </div>
+
+            <div nz-row [nzGutter]="data.contentGutter" class="page-select-company">
+                <div nz-col [nzSpan]="24" class="page-title">选择保险公司</div>
+                <div nz-col [nzSpan]="24">
+                    <div class="page-city-info">
+                        <em>投保城市</em>
+                        <p>{{data.city}}</p>
+                    </div>
+                </div>
+                <div nz-col nzXs="24" nzLg="12" class="page-company-group">
+                    <div class="page-company-label">保险公司</div>
+                    <div class="page-company-input">
+                        <app-select 
+                            class="select"
+                            [(value)]="data.companyCode"
+                            [options]="data.companyOptions"
+                            [optionByParent]="true"
+                        ></app-select>
+                    </div>
+                    <div class="page-company-error" [hidden]="!data.companyError">请选择保险公司</div>
+                </div>
+            </div>
+
+            <div nz-row [nzGutter]="data.contentGutter" class="page-insure-box">
+                <div nz-col [nzSpan]="24" class="page-title">选择保险</div>
+                <div nz-col nzXs="24" nzLg="12">
+                    <div nz-row>
+                        <div nz-col [nzSpan]="24" class="page-insure-title">商业险</div>
+                        <div nz-col [nzSpan]="24" class="page-company-group" [hidden]="data.businessType == 0">
+                            <div class="page-company-label">生效时间</div>
+                            <div class="page-company-input">
+                                <app-date-picker 
+                                    [(value)]="data.biStartTimeStamp"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+
+                        <div nz-col [nzSpan]="24" [ngClass]="{'page-insure-form':true,'is-spread':data.biVisible}">
+                            <div class="page-insure-name"
+                                [ngClass]="{'page-insure-name':true,'is-spread':data.biVisible}"
+                                (click)="onExtendByInsureList('bi')"
+                            >
+                                <i class="page-insure-name--extend" [hidden]="data.biVisible"></i>
+                                <i class="page-insure-name--unextend" [hidden]="!data.biVisible"></i>
+                                <h6>主险</h6>
+                            </div>
+                            <div 
+                                class="page-insure-list" 
+                                [hidden]="!data.biVisible"
+                            >
+                                <div 
+                                    class="page-insure-item" 
+                                    *ngFor="let item of data.bi;let key = index;"
+                                >
+                                    <div class="page-insure-item_label">
+                                        <span>{{item.label}}</span>
+                                        <i 
+                                            *ngIf="!!item.tooltip"
+                                            class="insure-info"
+                                            [tooltip]="item.tooltip"
+                                            [options]="data.tooltipOptions"
+                                        ></i>
+                                    </div>
+                                    <div class="page-insure-item_input" *ngIf="!item.isCheckbox">
+                                        <div 
+                                            class="page-insure-item_txt" 
+                                            [hidden]="item.moneyOptions.length > 1"
+                                        >
+                                            本地区暂不支持
+                                        </div>
+                                        <app-select 
+                                            [hidden]="item.moneyOptions.length <= 1"
+                                            class="page-insure-select"
+                                            [(value)]="item.moneyId"
+                                            [options]="item.moneyOptions"
+                                            [optionByParent]="true"
+                                        ></app-select>
+                                    </div>
+                                    <div class="page-insure-item_input" *ngIf="!!item.isCheckbox">
+                                        <div
+                                            [ngClass]="{'page-insure-item_checkbox': true,'checked': item.checked}"
+                                        >
+                                            <app-checkbox
+                                                [(checked)]="item.checked"
+                                                [label]="'投保'"
+                                            ></app-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        
+                        <div nz-col [nzSpan]="24" [ngClass]="{'page-insure-form':true,'is-spread':data.biMpVisible}">
+                            <div class="page-insure-name"
+                                [ngClass]="{'page-insure-name':true}"
+                                (click)="onExtendByInsureList('biMp')"
+                            >
+                                <i class="page-insure-name--extend" [hidden]="data.biMpVisible"></i>
+                                <i class="page-insure-name--unextend" [hidden]="!data.biMpVisible"></i>
+                                <h6>绝对免赔险</h6>
+                            </div>
+                            <div 
+                                class="page-insure-list" 
+                                [hidden]="!data.biMpVisible"
+                            >
+                                <div 
+                                    class="page-insure-item" 
+                                    *ngFor="let item of data.biMp;let key = index;"
+                                >
+                                    <div class="page-insure-item_label">
+                                        <span>{{item.label}}</span>
+                                        <i 
+                                            *ngIf="!!item.tooltip"
+                                            class="insure-info"
+                                            [tooltip]="item.tooltip"
+                                            [options]="data.tooltipOptions"
+                                        ></i>
+                                    </div>
+                                    <div class="page-insure-item_input">
+                                        <app-select 
+                                            [class]="'page-insure-select'" 
+                                            [(value)]="item.moneyId"
+                                            [options]="item.moneyOptions"
+                                            [optionByParent]="true"
+                                        ></app-select>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                        <div nz-col [nzSpan]="24" [ngClass]="{'page-insure-form':true,'is-spread':data.biAddVisible}">
+                            <div class="page-insure-name"
+                                [ngClass]="{'page-insure-name':true,'is-spread':data.biAddVisible}"
+                                (click)="onExtendByInsureList('biAdd')"
+                            >
+                                <i class="page-insure-name--extend" [hidden]="data.biAddVisible"></i>
+                                <i class="page-insure-name--unextend" [hidden]="!data.biAddVisible"></i>
+                                <h6>附加险</h6>
+                            </div>
+                            <div 
+                                class="page-insure-list" 
+                                [hidden]="!data.biAddVisible"
+                            >
+                                <div 
+                                    class="page-insure-item" 
+                                    *ngFor="let item of data.biAdd;let key = index;"
+                                >
+                                    <div class="page-insure-item_label">
+                                        <span>{{item.label}}</span>
+                                        <i 
+                                            *ngIf="!!item.tooltip"
+                                            class="insure-info"
+                                            [tooltip]="item.tooltip"
+                                            [options]="data.tooltipOptions"
+                                        ></i>
+                                    </div>
+                                    <div class="page-insure-item_check" *ngIf="!!item.hasShare">
+                                        <app-checkbox
+                                            [(checked)]="item.share"
+                                            [label]="'共享主险保额'"
+                                        ></app-checkbox>
+                                    </div>
+                                    <div class="page-insure-item_input" [hidden]="!item.hasMain">
+                                        <div 
+                                            class="page-insure-item_txt"
+                                        >
+                                            <span class="left">{{item.mainLabel}}</span>
+                                            <span class="right">{{item.mainMoney}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="page-insure-item_input" [hidden]="!!item.share">
+                                        <div 
+                                            class="page-insure-item_txt" 
+                                            [hidden]="item.moneyOptions.length > 1"
+                                        >
+                                            本地区暂不支持
+                                        </div>
+                                        <app-select 
+                                            [hidden]="item.moneyOptions.length <= 1"
+                                            [class]="'page-insure-select'" 
+                                            [(value)]="item.moneyId"
+                                            [options]="item.moneyOptions"
+                                            [optionByParent]="true"
+                                        ></app-select>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        
+                        <div
+                            nz-col 
+                            [nzSpan]="24" 
+                            *ngIf="data.businessType != 0"
+                            [ngClass]="{'page-insure-form':true,'is-spread':data.biSpecialVisible}"
+                            [hidden]="true"
+                        >
+                            <div class="page-insure-name"
+                                [ngClass]="{'page-insure-name':true,'is-spread':data.biSpecialVisible}"
+                                (click)="onExtendByInsureList('biSpecial')"
+                            >
+                                <i class="page-insure-name--extend" [hidden]="data.biSpecialVisible"></i>
+                                <i class="page-insure-name--unextend" [hidden]="!data.biSpecialVisible"></i>
+                                <h6>特约条款</h6>
+                            </div>
+                            <div 
+                                class="page-insure-list" 
+                                [hidden]="!data.biSpecialVisible"
+                            >
+                                <div 
+                                    class="page-insure-item" 
+                                    *ngFor="let item of data.biSpecial;let key = index;"
+                                >
+                                    <div class="page-insure-item_label">{{item.label}}</div>
+                                    <div class="page-insure-item_input">
+                                        <app-select 
+                                            [class]="'page-insure-select'" 
+                                            [(value)]="item.moneyId"
+                                            [options]="item.moneyOptions"
+                                            [optionByParent]="true"
+                                        ></app-select>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="page-insure-time" [hidden]="data.businessType == 0">
+                        <p>生效时间</p>
+                        <p>
+                            {{data.biStartDateStr}} 
+                            <a href="javascript:void(0)" (click)="biCardDateShow($event)">修改</a>
+                            <a 
+                                href="javascript:void(0)" 
+                                (click)="datePromptly('bi')"
+                            >即时生效</a>
+                        </p>
+                        <div 
+                            [ngClass]="{'page-insure-card-date': true,'visible':data.biCardDate}"
+                            (click)="biCardDateClick($event)"
+                        >
+                            <app-card-date-picker
+                                [home]="this"
+                                [valueChange]="onBiDateChange"
+                            ></app-card-date-picker>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div> -->
+                    
+
+                    
+                </div>
+
+                <div nz-col nzXs="24" nzLg="12">
+                    <div nz-row>
+                        <div nz-col [nzSpan]="24" class="page-insure-title">交强险</div>
+                        <div nz-col [nzSpan]="24" class="page-company-group" [hidden]="data.businessType == 0">
+                            <div class="page-company-label">生效时间</div>
+                            <div class="page-company-input">
+                                <app-date-picker 
+                                    [(value)]="data.ciStartTimeStamp"
+                                ></app-date-picker>
+                            </div>
+                        </div>
+
+                        <div nz-col [nzSpan]="24" [ngClass]="{'page-insure-form':true,'is-spread':data.ciVisible}">
+                            <div class="page-insure-name"
+                                [ngClass]="{'page-insure-name':true,'is-spread':data.ciVisible}"
+                                (click)="data.ciVisible = !data.ciVisible"
+                            >
+                                <i class="page-insure-name--extend" [hidden]="data.ciVisible"></i>
+                                <i class="page-insure-name--unextend" [hidden]="!data.ciVisible"></i>
+                                <h6>机动车交通事故责任强制保险</h6>
+                            </div>
+                            <div 
+                                class="page-insure-list" 
+                                [hidden]="!data.ciVisible"
+                            >
+                                <div 
+                                    class="page-insure-item" 
+                                    *ngFor="let item of data.ci;let key = index;"
+                                >
+                                    <div class="page-insure-item_label">{{item.label}}</div>
+                                    <div class="page-insure-item_input">
+                                        <div
+                                            [ngClass]="{'page-insure-item_checkbox': true,'checked': item.checked}"
+                                        >
+                                            <app-checkbox
+                                                [(checked)]="item.checked"
+                                                [label]="'投保'"
+                                            ></app-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="page-insure-item_input">
+                                        <app-select 
+                                            *ngIf="!item.disabled"
+                                            [class]="'page-insure-select'" 
+                                            [(value)]="item.moneyId"
+                                            [options]="item.moneyOptions"
+                                            [optionByParent]="true"
+                                        ></app-select>
+                                    </div> -->
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="page-insure-time" [hidden]="data.businessType == 0">
+                        <p>生效时间</p>
+                        <p>
+                            {{data.ciStartDateStr}} 
+                            <a href="javascript:void(0)" (click)="ciCardDateShow($event)">修改</a>
+                            <a 
+                                href="javascript:void(0)" 
+                                (click)="datePromptly('ci')"
+                            >即时生效</a>
+                        </p>
+                        <div 
+                            [ngClass]="{'page-insure-card-date': true,'visible':data.ciCardDate}"
+                            (click)="ciCardDateClick($event)"
+                        >
+                            <app-card-date-picker
+                                [home]="this"
+                                [valueChange]="onCiDateChange"
+                            ></app-card-date-picker>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+        <div nz-col nzXs="24" nzLg="6" [nzOffset]="data.nzOffset" class="page-layout-content--right">
+            <app-page-bottom 
+                [home]="this"
+                [label1]="data.pageBottomBtn1Label"
+                [run1]="onBtn1"
+                [btn1Disabled]="data.pageBottomBtn1Disabled"
+                [btn1Hidden]="data.pageBottomBtn1Hidden"
+                [label2]="data.pageBottomBtn2Label"
+                [run2]="onBtn2"
+                [btn2Disabled]="data.pageBottomBtn2Disabled"
+                [btn2Hidden]="data.pageBottomBtn2Hidden"
+                [hasClause]="data.hasClause"
+                [hasExplain]="data.hasExplain"
+                [explainTxt]="data.explainTxt"
+                [(clauseChecked)]="data.clauseChecked"
+            >
+            </app-page-bottom>
+        </div>
+    </div>
+
+    <!-- <app-basic-info
+        #appBasicInfo
+        [(props)]="data.carInfo"
+        [rightInfoFill]="data.rightInfoFill"
+        [hasVin]="data.hasVin"
+    ></app-basic-info> -->
+</div>
+
+<nz-modal 
+    [(nzVisible)]="data.historyModalVisible"
+    nzClassName="tesla-modal"
+    nzTitle=""
+    nzFooter="null"
+    (nzOnCancel)="onCloseHistoryModal()"
+>
+    <app-history-list
+        #appHistoryList
+        class="history-list"
+        [home]="this"
+        [list]="data.historyList"
+        [run]="onSelectHistory"
+    ></app-history-list>
+</nz-modal>

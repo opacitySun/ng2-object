@@ -1,0 +1,38 @@
+<div class="basic-info-box">
+    <div nz-row [nzGutter]="[24, 20]">
+        <div nz-col [nzSpan]="24" class="basic-info-title">车辆信息</div>
+        <div nz-col [nzSpan]="24">
+            <div nz-row [nzGutter]="[24, 15]">
+                <div nz-col nzXs="10" nzLg="4" class="basic-info-txt"><span style="padding-left: 20px;">被保车辆：</span></div>
+                <div nz-col nzXs="14" nzLg="20" class="basic-info-txt">{{data.carInfo.model}}</div>
+            </div>
+            <div nz-row [nzGutter]="[24, 15]">
+                <div nz-col nzXs="10" nzLg="4" class="basic-info-txt"><span style="padding-left: 20px;">车辆价格：</span></div>
+                <div nz-col nzXs="14" nzLg="20" class="basic-info-txt">￥{{!!data.carInfo.price?utils.formatMoney(data.carInfo.price, 2):''}}</div>
+            </div>
+            <div nz-row [nzGutter]="[24, 15]" *ngIf="hasVin">
+                <div nz-col nzXs="10" nzLg="4" class="basic-info-txt"><span style="padding-left: 20px;">车架号：</span></div>
+                <div nz-col nzXs="14" nzLg="20" class="basic-info-txt">{{data.carInfo.vinNo}}</div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="24" *ngIf="isWhole">
+            <div nz-row [nzGutter]="24">
+                <div nz-col nzXs="24" nzLg="12">
+                    <div class="basic-info-item_label">车牌号</div>
+                    <div class="basic-info-item_input">
+                        <app-input 
+                            [disabled]="data.carInfo.isNew"
+                            [(value)]="data.carInfo.carNo"
+                        ></app-input>
+                    </div>
+                </div>
+                <div nz-col nzXs="24" nzLg="12" class="basic-info-item--check">
+                    <app-checkbox
+                        [label]="'我是新车车主'"
+                        [(checked)]="data.carInfo.isNew"
+                    ></app-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="history-list-box">
+    <div class="history-list-title">
+        我的历史记录<small>（此价格为试算价格，仅供参考，实际投保价格以保司核保结果为准）</small>
+    </div>
+    <div class="history-list-content">
+        <div 
+            *ngFor="let item of data.list;let key = index;"
+            [ngClass]="{'history-list-item':true,'checked':data.checkedKey == key}"
+            (click)="data.checkedKey = key"
+        >
+            <div class="history-list-item--left">
+                <!-- <em>￥{{utils.formatMoney(item.sumInsured, 2)}}</em> -->
+                <span>{{item.companyName}}</span>
+            </div>
+            <div class="history-list-item--right">
+                <em>￥{{utils.formatMoney(item.salePremium, 2)}}/年</em>
+            </div>
+        </div>
+    </div>
+    <div class="history-list-btn">
+        <button 
+            [ngClass]="{'tesla-btn': true,'tesla-btn--info': true,'no-check': data.checkedKey == null}"
+            (click)="onSelect()"
+        >选择</button>
+    </div>
+</div>

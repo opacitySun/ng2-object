@@ -1,0 +1,61 @@
+<!-- <div 
+    [ngClass]="{'select-pc':true}"
+    [tabindex]="data.tabIndex" 
+    [id]="data.eleId"
+    (blur)="selectFocus($event)"
+    *ngIf="data.device == 0"
+>
+    <div 
+        [ngClass]="{'select-div':true,'select-active':data.active}"
+        (click)="selectFocus($event,true)"
+    >
+        <span>{{data.label}}</span>
+        <i [ngClass]="{'down':!data.active,'up':data.active}"></i>
+    </div>
+    <div 
+        [ngClass]="{'option-div':true,'option-show':data.active}" 
+        [ngStyle]="{
+            'z-index':data.optionsZIndex,
+            'position': data.optionsPosition,
+            'width': data.optionsWidth,
+            'left': data.optionsLeft,
+            'top': data.optionsTop
+        }"
+    >
+        <div 
+            *ngFor="let item of data.options"
+            [ngClass]="{'option-item':true,'option-current':item.value == data.value}" 
+            (click)="setValue(item)"
+        >
+            <span>{{item.label}}</span>
+            <i class="checked"></i>
+        </div>
+    </div>
+</div> -->
+
+<div 
+    [ngClass]="{'select-pc':true}"
+    *ngIf="data.device == 0"
+>
+    <select [(ngModel)]="data.value">
+        <option *ngFor="let item of data.options" [value]="item.value">{{item.label}}</option>
+    </select>
+</div>
+
+<div 
+    *ngIf="data.device == 1 || data.device == 2"
+    [ngClass]="{'select-mobile':true}" 
+    [tabindex]="data.tabIndex" 
+    [id]="data.eleId"
+    (click)="showMobilePicker()"
+>
+    <div 
+        [ngClass]="{
+            'select-div':true,
+            'select-active':data.active
+        }"
+    >
+        <span>{{data.label}}</span>
+        <i [ngClass]="{'down':!data.active,'up':data.active}"></i>
+    </div>
+</div>

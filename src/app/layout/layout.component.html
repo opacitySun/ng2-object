@@ -1,0 +1,37 @@
+<div 
+    *ngIf="rerender"
+    [ngClass]="{'layout':true}"
+>
+    <div class="layout-header">
+        <app-header></app-header>
+    </div>
+    <div class="layout-content" id="layoutContent">
+        <router-outlet></router-outlet>
+        <div class="layout-footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>
+
+<app-loading 
+    class="layout-loading"
+    [hidden]="!session.state.loading"
+    [ngStyle]="{'z-index':loadingZIndex}"
+></app-loading>
+
+<nz-modal 
+    [(nzVisible)]="session.state.tipsVisible"
+    nzClassName="tesla-modal2"
+    nzTitle=""
+    nzFooter="null"
+    nzClosable="false"
+    (nzOnCancel)="onTipsClose()"
+>
+    <div class="tips-content">
+        <h3>提示</h3>
+        <p>您即将进入投保流程，请您在购买保险时仔细阅读相关保险条款，产品由华泰保险经纪与中国人民保险、中国平安保险、中国太平洋保险、中国人寿财产保险联合提供，为维护您的合法权益，您的操作将会被记录。</p>
+        <div class="tips-content-btn">
+            <button class="tesla-btn tesla-btn--primary" (click)="onTipsClose()">确定</button>
+        </div>
+    </div>
+</nz-modal>

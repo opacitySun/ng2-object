@@ -1,0 +1,20 @@
+<div class="pay-timeout">
+    <div class="pay-timeout-center">
+        <div class="pay-timeout-icon">
+            <fa-icon [icon]="data.icon1"></fa-icon>
+        </div>
+        <div class="pay-timeout-text">
+            支付超时
+        </div>
+        <div class="pay-timeout-small">
+            非常抱歉，因超时未支付，订单已自动取消。请重新获取报价。
+        </div>
+        <!-- <div class="pay-timeout-service">
+            <fa-icon [icon]="data.icon2"></fa-icon>
+            <span>客服中心电话：{{data.serviceTelephone}}</span>
+        </div> -->
+        <div class="pay-timeout-btn">
+            <button class="tesla-btn tesla-btn--info" (click)="onQuote()">重新报价</button>
+        </div>
+    </div>
+</div>

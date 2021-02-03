@@ -1,0 +1,113 @@
+<div class="verify-success">
+    <div nz-row>
+        <div nz-col [nzSpan]="24">
+            <div class="verify-success-title">保险订单</div>
+            <div class="verify-success-company">
+                <span>保险公司</span>
+                <em>{{data.companyName}}</em>
+            </div>
+            <div class="verify-success-time">
+                <div class="verify-success-time-title">生效时间</div>
+                <div class="verify-success-time-item" [hidden]="!utils.hasValue(data.biStartTime)">
+                    <div class="verify-success-time-left">商业险</div>
+                    <div class="verify-success-time-right">{{data.biStartTime}}</div>
+                </div>
+                <div class="verify-success-time-item" [hidden]="!utils.hasValue(data.ciStartTime)">
+                    <div class="verify-success-time-left">交强险</div>
+                    <div class="verify-success-time-right">{{data.ciStartTime}}</div>
+                </div>
+            </div>
+            <div class="verify-success-total">
+                <div class="verify-success-total-left">总金额</div>
+                <div class="verify-success-total-right">
+                    {{data.totalMoney}}
+                </div>
+            </div>
+            
+            <div class="verify-success-btn">
+                <button class="tesla-btn tesla-btn--primary" (click)="onPay()">支付保费</button>
+            </div>
+
+            <div class="verify-success-btn2">
+                <a href="javascript:void(0)">取消支付</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nz-modal 
+    *ngIf="!!data.codeLength"
+    [(nzVisible)]="data.payModalVisible && !data.codeUrl"
+    nzClassName="tesla-modal2"
+    nzTitle=""
+    nzWidth="800px"
+    nzFooter="null"
+    (nzOnCancel)="data.payModalVisible = false"
+>
+    <div class="pay-content">
+        <div class="pay-content-title">身份认证</div>
+        <div class="pay-content-error" [hidden]="!data.payError">
+            <i>i</i>
+            <p>{{data.payError}}</p>
+        </div>
+        <div class="pay-content-phone">
+            短信已经发送到手机{{data.phone}}，
+            <span *ngIf="data.companyCode == 'GPIC'">请根据短信提示进行保费支付。</span>
+            <span *ngIf="data.areaCode != '110100'">请输入{{data.codeLength}}位验证码验证您的身份。</span>
+            <span *ngIf="data.areaCode == '110100'">请完成认证。</span>
+        </div>
+        <div class="pay-content-text" *ngIf="data.areaCode == '110100'">
+            <div class="pay-content-text--item">
+                <em>1</em>
+                <p>请在短信中打开链接，签署电子协议</p>
+            </div>
+            <div class="pay-content-text--item">
+                <em>2</em>
+                <p>填写短信中{{data.codeLength}}位验证码</p>
+            </div>
+        </div>
+        <div class="pay-content-code" *ngIf="!!data.hasVerifyCode">
+            <div nz-row>
+                <div nz-col nzXs="24" nzLg="12">
+                    <div class="pay-content-code--input">
+                        <code-input [isCodeHidden]="false"
+                            [isNonDigitsCode]="false"
+                            [codeLength]="data.codeLength"
+                            [isCharsCode]="true"
+                            [isPrevFocusableAfterClearing]="false"
+                            [code]="data.secondCode"
+                            (codeChanged)="onCodeChanged($event)"
+                            (codeCompleted)="onCodeCompleted($event)">
+                        </code-input>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="24">
+                    <div 
+                        [ngClass]="{'pay-content-code--btn': true,'been-sent': data.codeBeenSent}"
+                        (click)="onGetCode()"
+                    >
+                        {{data.codeBtnText}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pay-content-btn">
+            <button class="tesla-btn tesla-btn--info" (click)="onPayModalConfirm()">{{data.payBtnText}}</button>
+        </div>
+    </div>
+</nz-modal>
+
+<nz-modal 
+    [(nzVisible)]="!!data.codeUrl"
+    nzClassName="tesla-modal2"
+    nzTitle=""
+    nzFooter="null"
+    nzClosable="false"
+    nzMaskClosable="false"
+>
+    <div class="code-content">
+        <h4>请扫描二维码支付</h4>
+        <qr-code [value]="data.codeUrl" [size]="150"></qr-code>
+    </div>
+</nz-modal>

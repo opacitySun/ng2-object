@@ -1,0 +1,48 @@
+@import "~assets/styles/variable.scss";
+
+.footer-box{
+    width: 100%;
+    height: 66px;
+
+    .footer-locale{
+        width: 100%;
+        height: 66px;
+        line-height: 66px;
+        text-align: center;
+        color: $colorLightGray2;
+        font-size: $fontSize3;
+
+        p{
+            display: inline-block;
+            padding: 0 10px;
+
+            &:last-child{
+                border-right: 0;
+            }
+        }
+
+        span{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width:640px) {
+    .footer-box{
+        height: auto;
+        padding: 40px 0;
+
+        .footer-locale{
+            height: auto;
+            line-height: 24px;
+
+            p{
+                display: block;
+            }
+
+            span{
+                display: none;
+            }
+        }
+    }
+}

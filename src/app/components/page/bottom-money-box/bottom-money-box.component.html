@@ -1,0 +1,29 @@
+<div 
+    class="bottom-money-box"
+>
+    <div class="one">
+        <p>金额</p>
+    </div>
+    <div class="two">
+        <div class="item">
+            <span class="sp1">￥{{data.bi}}</span>
+            <br />
+            <span class="sp2">商业保险</span>
+        </div>
+        <div class="concat">+</div>
+        <div class="item">
+            <span class="sp1">￥{{data.ci}}</span>
+            <br />
+            <span class="sp2">交强险</span>
+        </div>
+    </div>
+    <div class="three">
+        <div class="left">
+            <span>总计</span>
+            <strong>￥{{data.total}}</strong>
+        </div>
+        <div class="right">
+            <button class="tesla-btn tesla-btn--primary" (click)="onSave()">方案保存</button>
+        </div>
+    </div>
+</div>

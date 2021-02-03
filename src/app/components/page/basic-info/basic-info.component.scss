@@ -1,0 +1,46 @@
+@import "~assets/styles/variable.scss";
+
+.basic-info-box{
+    width: 100%;
+    
+    .basic-info-title{
+        font-size: 24px;
+        color: $colorBlack;
+    }
+
+    .basic-info-txt{
+        font-size: $fontSize3;
+        color: $colorBlack;
+    }
+
+    .basic-info-item--check{
+        padding-top: 34px;
+    }
+
+    .basic-info-item_label{
+        float: left;
+        width: 100%;
+        line-height: 30px;
+        font-size: $fontSize3;
+        color: $colorLightGray2;
+        padding-left: 20px;
+
+        &.color2{
+            color: $colorLightGray;
+        }
+    }
+
+    .basic-info-item_input{
+        float: left;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .basic-info-box{
+        .basic-info-item--check{
+            padding-top: 10px;
+            padding-left: 32px !important;
+        }
+    }
+}
